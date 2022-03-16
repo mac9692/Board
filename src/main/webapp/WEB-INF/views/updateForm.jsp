@@ -20,6 +20,7 @@
         <tr>
             <td>번호</td>
             <input type="hidden" name="id" value="<%=id%>">
+            <td><% out.print(id); %></td>
         </tr>
         <tr>
             <td>작성자</td>
