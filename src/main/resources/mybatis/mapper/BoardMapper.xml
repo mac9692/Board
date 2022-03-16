@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.plateer.board.dao.BoardDAO">
+
+    <select id="listDAO" resultType="com.plateer.board.dto.BoardDTO">
+        SELECT *
+        FROM board
+        ORDER BY id DESC
+    </select>
+
+    <select id="viewDAO" resultType="com.plateer.board.dto.BoardDTO">
+        SELECT * FROM board WHERE id = CAST(#{_id} AS INTEGER)
+    </select>
+
+    <insert id="writeDAO">
+        INSERT INTO board (id, writer, title, content)
+        VALUES (default, #{_writer}, #{_title}, #{_content})
+    </insert>
+
+    <update id="updateDAO">
+        UPDATE board
+        SET writer = #{_writer}, title = #{_title}, content = #{_content}
+        WHERE id = CAST(#{_id} AS INTEGER)
+    </update>
+
+    <delete id="deleteDAO">
+        DELETE FROM board
+        WHERE id = CAST(#{_id} AS INTEGER)
+    </delete>
+</mapper>
