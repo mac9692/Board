@@ -2,6 +2,7 @@ package com.plateer.board.dao;
 
 import com.plateer.board.dto.BoardDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ import java.util.List;
 public interface BoardDAO {
 
     public List<BoardDTO> listDAO();
-    public BoardDTO viewDAO(String id);
-    public int writeDAO(String writer, String title, String content);
-    public int updateDAO(String writer, String title, String content, String id);
-    public int deleteDAO(String id);
+    public BoardDTO viewDAO(@Param("_id") String id);
+    public int writeDAO(@Param("_writer") String writer, @Param("_title") String title, @Param("_content") String content);
+    public int updateDAO(@Param("_writer") String writer, @Param("_title") String title, @Param("_content") String content, @Param("_id") String id);
+    public int deleteDAO(@Param("_id") String id);
 
 }
