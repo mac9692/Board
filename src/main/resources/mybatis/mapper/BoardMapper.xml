@@ -30,4 +30,5 @@
         DELETE FROM board
         WHERE id = CAST(#{_id} AS INTEGER)
     </delete>
+
 </mapper>

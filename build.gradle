@@ -34,6 +34,8 @@ dependencies {
     implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.4'
     implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.6.3'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

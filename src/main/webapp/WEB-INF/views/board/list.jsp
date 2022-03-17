@@ -25,12 +25,13 @@
         <tr>
             <td>${dto.id}</td>
             <td>${dto.writer}</td>
-            <td><a href="view?id=${dto.id}">${dto.title}</a></td>
-            <td><a href="delete?id=${dto.id}">X</a></td>
+            <td><a href="/board/view?id=${dto.id}">${dto.title}</a></td>
+            <td><a href="/board/delete?id=${dto.id}">X</a></td>
         </tr>
     </c:forEach>
 </table>
 
-<p><a href="writeForm">글 작성</a></p>
+<p><a href="/board/writeForm">글 작성</a></p>
+<p><a href="/">홈페이</a> </p>
 </body>
 </html>

@@ -26,7 +26,7 @@
         <td>${dto.content}</td>
     </tr>
     <tr>
-        <td><a href="list">글목록</a> &nbsp;&nbsp; <a href="updateForm?id=${dto.id}">글수정</a> &nbsp;&nbsp; <a href="delete?id=${dto.id}">글삭제</a></td>
+        <td><a href="/board/list">글목록</a> &nbsp;&nbsp; <a href="/board/updateForm?id=${dto.id}">글수정</a> &nbsp;&nbsp; <a href="/board/delete?id=${dto.id}">글삭제</a></td>
     </tr>
 </table>
 </body>
