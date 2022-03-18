@@ -15,7 +15,14 @@
 <body>
 <h1><a href="/">Plateer</a></h1>
 
-<form action="/login" method="post">
+<c:url value="/login" var="loginUrl"/>
+<form action="${loginUrl}" method="post">
+    <c:if test="${param.error != null}">
+        <p>
+            Login Error <br>
+            ${error_message}
+        </p>
+    </c:if>
     ID : <input type="text" name="username"> <br/>
     PASSWORD : <input type="text" name="password"> <br/>
     <input type="submit" value="login"> <br/>

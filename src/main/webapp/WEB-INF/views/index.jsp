@@ -12,12 +12,21 @@
     <title>Index</title>
 </head>
 <body>
-<a href="/board/list">게시판</a>
-<a href="/login">로그인</a>
-<a href="/logout">로그아웃</a>
-<br>
-<a href="/admin/home">관리자 페이지</a>
-<a href="/member/home">회원 페이지</a>
-<a href="/guest/home">게스트 페이지</a>
+<table>
+    <tr>
+        <td><a href="/board/list">게시판</a></td>
+    </tr>
+    <tr>
+        <td><a href="/common/signupForm">회원가입</a></td>
+        <td><a href="/login">로그인</a></td>
+        <td><a href="/common/signout">로그아웃</a></td>
+    </tr>
+    <tr>
+        <td><a href="/admin/home">관리자 페이지</a></td>
+        <td><a href="/member/home">회원 페이지</a></td>
+        <td><a href="/guest/home">게스트 페이지</a>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

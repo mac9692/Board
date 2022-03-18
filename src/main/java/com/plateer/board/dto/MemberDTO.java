@@ -3,7 +3,7 @@ package com.plateer.board.dto;
 import lombok.Data;
 
 @Data
-public class memberDTO {
+public class MemberDTO {
     private int id;
     private String email;
     private String password;

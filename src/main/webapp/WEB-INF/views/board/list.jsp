@@ -13,7 +13,7 @@
     <title>게시판</title>
 </head>
 <body>
-
+<p><a href="/">Plateer</a> </p>
 <table>
     <tr>
         <td>번호</td>
@@ -32,6 +32,5 @@
 </table>
 
 <p><a href="/board/writeForm">글 작성</a></p>
-<p><a href="/">홈페이</a> </p>
 </body>
 </html>

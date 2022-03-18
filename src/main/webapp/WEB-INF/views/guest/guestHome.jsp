@@ -12,6 +12,9 @@
     <title>GuestHome</title>
 </head>
 <body>
+<h1>
+    <a href="/">Plateer</a>
+</h1>
 Welcome : Guest
 </body>
 </html>

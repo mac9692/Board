@@ -67,25 +67,6 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-//    회원별페이지 컨트롤러
-
-    @RequestMapping("/guest/home")
-    public String guestHome(){
-
-        return "/guest/guestHome";
-    }
-
-    @RequestMapping("/member/home")
-    public String memberHome(){
-
-        return "/member/memberHome";
-    }
-
-    @RequestMapping("/admin/home")
-    public String adminHome(){
-
-        return "/admin/adminHome";
-    }
 
 //    하단은 JDBC Template을 이용하여 CRUD를 구현한 코드입니다.
     /*@Autowired

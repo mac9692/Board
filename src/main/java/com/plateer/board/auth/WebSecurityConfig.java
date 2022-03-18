@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -20,33 +23,55 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 .antMatchers("/board/**").permitAll()
                 .antMatchers("/guest/**").permitAll()
-                .antMatchers("/member/**").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/common/**").permitAll()
+                .antMatchers("/member/**").hasAnyRole("MEMBER","ADMIN")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.formLogin()
                 .loginPage("/login")
-                .failureUrl("/loginError")
+                .failureUrl("/login?error")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll();
 
         http.logout()
-                .permitAll();
+                .logoutUrl("/common/signout")
+                        .logoutSuccessUrl("/");
+
+
 
         http.csrf().disable();
     }
 
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("member").password(passwordEncoder().encode("1234"))
+//                .roles("MEMBER").and().withUser("admin").password(passwordEncoder().encode("1234"))
+//                .roles("ADMIN");
+//    }
+
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("1234"))
-                .roles("USER").and().withUser("admin").password(passwordEncoder().encode("1234"))
-                .roles("ADMIN");
+    DataSource dataSource;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .rolePrefix("ROLE_")
+                .usersByUsernameQuery("SELECT email, password, true from member WHERE email=?")
+                .authoritiesByUsernameQuery("SELECT email, authority FROM member WHERE email=?")
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
 }

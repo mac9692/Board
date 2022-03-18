@@ -7,12 +7,14 @@
 
     <select id="listDAO" resultType="com.plateer.board.dto.BoardDTO">
         SELECT *
-        FROM board
-        ORDER BY id DESC
+          FROM board
+         ORDER BY id DESC
     </select>
 
     <select id="viewDAO" resultType="com.plateer.board.dto.BoardDTO">
-        SELECT * FROM board WHERE id = CAST(#{_id} AS INTEGER)
+        SELECT *
+          FROM board
+         WHERE id = CAST(#{_id} AS INTEGER)
     </select>
 
     <insert id="writeDAO">
@@ -22,13 +24,13 @@
 
     <update id="updateDAO">
         UPDATE board
-        SET writer = #{_writer}, title = #{_title}, content = #{_content}
-        WHERE id = CAST(#{_id} AS INTEGER)
+           SET writer = #{_writer}, title = #{_title}, content = #{_content}
+         WHERE id = CAST(#{_id} AS INTEGER)
     </update>
 
     <delete id="deleteDAO">
         DELETE FROM board
-        WHERE id = CAST(#{_id} AS INTEGER)
+         WHERE id = CAST(#{_id} AS INTEGER)
     </delete>
 
 </mapper>
